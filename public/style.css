@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Expletus+Sans:600|Poppins&display=swap');
+@font-face {
+  font-family: "Sansation";
+  src: url("https://cdn.glitch.com/fa63d403-56d7-46a6-a882-45da7810c9c4%2FSansation_Regular.ttf?v=1568588341206") format('truetype'),
+    url("https://cdn.glitch.com/fa63d403-56d7-46a6-a882-45da7810c9c4%2FSansation_Bold.ttf?v=1568588336243") format('truetype');
+}
+/*master styles*/html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comfortaa', sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+:root {
+  --nav-padding-bottom: 1rem;
+  --nav-background-color: transparent;
+    --nav-on-hover-color: #FFFFFF;
+  --nav-color: #FFFFFF;
+ --nav-on-hover-background-color: transparent;
+  --nav-transition-time: 0.15s;
+  --icon-margin: -0.35rem;
+  --icon-scale: 1;
+  --nav-text-size: 1.3rem;
+  --nav-margin-top-bottom: 1rem;
+}
+
+@media only screen and (max-width: 700px) {
+  :root{
+    --row-num: 2;
+    --logo-size: 3rem;
+    --card-row-num: 1;
+    --portfolio-background-img-height: 15rem;
+    --banner-title-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  :root {
+    --row-num: 3;
+    --logo-size: 3.5rem;
+    --card-row-num: 2;
+    --portfolio-background-img-height: 20rem;
+    --banner-title-size: 5rem;
+  }
+}
+
+/*nav styles*/
+nav {
+  width: 100vw;
+  background-color: var(--nav-background-color);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /*adds space to fill screen to edges between divs*/
+  align-items: center;
+  color: #FFFFFF;
+  font-family: 'Sansation', sans-serif;
+  z-index: 1;
+  font-size: var(--nav-text-size);
+  transition: all var(--nav-transition-time);
+  padding-bottom: var(--nav-padding-bottom);
+  box-shadow: 0 0.5rem 0.15rem var(--nav-background-color);
+  position: fixed;
+  z-index: 1;
+  transition: all var(--nav-transition-time);
+}
+
+.left, .right {
+  margin-top: var(--nav-margin-top-bottom);
+  margin-bottom: var(--nav-margin-top-bottom);
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.right {
+  margin-left: 0.6rem;
+    transition: all var(--nav-transition-time);
+}
+
+.left {
+  font-weight: bold;
+  margin-left: 1.6rem;
+  margin-right: 0.9rem;
+  transition: all var(--nav-transition-time);
+}
+
+.right:last-child {
+  margin-right: 0.8rem;
+}
+
+.nav-icon {
+  transition: transform var(--nav-transition-time);
+  height: 2rem;
+  transform: scale(var(--icon-scale), var(--icon-scale));
+  margin-right: 1rem;
+}
+
+.nav-link-wrapper a {
+  z-index: 2;
+  padding: 0.2rem 0.8rem .2rem 0.8rem; 
+  margin-left: 0.5rem;
+  color: var(--nav-color);
+  border: 0.1rem solid transparent;
+  border-radius:  10rem;
+  text-decoration: none;
+}
+
+.nav-link-wrapper a:hover {
+  transition: all var(--nav-transition-time);
+  color: var(--nav-on-hover-color);
+  background-color: var( --nav-on-hover-background-color);
+  border: 0.1rem solid #FFFFFF;
+  box-shadow: 0 0.1rem 1rem rgba(0,0,0,0.3);
+}
+
+.current-link {
+  border: 0.1rem solid #FFFFFF  !important;
+}
+
+.past-top {
+  --nav-on-hover-color: #000000;
+  --nav-on-hover-background-color: #FFFFFF;
+  --icon-margin: -0.25rem;
+  --icon-scale: 0.8;
+  --nav-text-size: 1rem;
+  --nav-color: #FFFFFF;
+  --nav-background-color: rgba(0,0,0,0.8);
+  --nav-padding-bottom: 0rem;
+  --nav-margin-top-bottom: 0.4rem;;
+}
+
+/*make the nav bar act as a block*/
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* banner styles */
+.banner-wrapper {
+  position: relative;
+  top: 0; 
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-image {
+ height: 100vh;
+  min-width: 100vw;
+  background-size: cover;
+}
+
+.caption-wrapper {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.caption {
+  font-family: 'Sansation', sans-serif;
+  font-size: var(--banner-title-size);
+  display: block;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  transition: font-size 0.3s;
+}
+
+/*portfolio styles*/
+.portfolio-items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(var(--row-num), 1fr);
+  background-color: #000000;
+}
+
+.portfolio-item-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-img-background {
+  height: var(--portfolio-background-img-height);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-text-wrapper {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.img-text-wrapper {
+  width: 100%;
+}
+
+.img-text-wrapper .subtitle {
+  transition: all 0.2s ease-out;
+  padding-top: 1rem;
+  color: transparent;
+}
+
+.img-text-wrapper:hover .subtitle {
+  color: #FFFFFF;
+  padding-top: 0.25rem;
+  padding-bottom: 1.5rem;
+}
+
+.logo-wrapper {
+  display: block;
+}
+
+.logo-wrapper  img{
+  width: var(--logo-size);
+  height: var(--logo-size);
+}
+
+.img-darken {
+  transition: filter 0.25s ease-in-out, transform 1s; 
+  filter: brightness(25%); /* blur(5rem) looks awesome */
+  transform: scale(1.1, 1.1);
+}
+
+.img-lighten {
+  transition: 0.25s ease-in-out, transform 1s;
+  filter: brightness(100%); /* blur(0rem) looks awesome */
+}
+
+
+/* card content styles */
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-columns: repeat(var(--card-row-num), 1fr);
+  background-color: #040404;
+}
+
+/*spacer styles*/
+.spacer {
+  height: 3.5rem;
+  display: block;
+}
+
+.card { 
+  flex-basis: 15rem;
+  flex-grow: 1;
+  max-width: 25rem;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  /*x-offset | y-offset | radius | spread | color*/
+  box-shadow: 0rem .3rem 1.5rem 0.3rem rgba(0,0,0,0.2);
+  background-color: #202225;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content img {
+  width: 100%;
+  border-radius: 0.7rem;
+}
+
+.card-header {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+  margin: 0;
+}
+
+.card-text {
+  color: #EEEEEE;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+ul {
+  margin: 0;
+}
+
+p a {
+  display: inline-block;
+  color: #FFFFFF;
+  border-radius: 10rem;
+  transition: all 0.3s;
+}
+
+p a:hover {
+  background-color: #555555;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+}
